@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Room {
+  id     Int @id @default(autoincrement())
+  floor  Int
+  number Int
+}
+
+model Reservation {
+  id       Int      @id @default(autoincrement())
+  roomId   Int
+  fromDate DateTime
+  toDate   DateTime
+}
